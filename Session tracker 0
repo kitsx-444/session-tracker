@@ -9,7 +9,7 @@ events = [{'event': 'U.S. Unemployment Rates', 'currency': 'USD', 'date': '2026-
 		  {'event': 'Average Hourly Earnings', 'currency': 'USD', 'date': '2026-06-25', 'impact': 'Low'}]
 
 
-def upcoming_events(events): # It works as is bruh, leave it. Don't touch it.
+def upcoming_events(events): 
 	date_format = '%Y-%m-%d'
 	current_date = datetime.today() # this must be used as reference
 
