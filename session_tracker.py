@@ -11,11 +11,13 @@ events = [{'event': 'U.S. Unemployment Rates', 'currency': 'USD', 'date': '2026-
 
 def upcoming_events(events):
 	date_format = '%Y-%m-%d'
-	current_date = datetime.today()
+	current_date = datetime.today() 
+
 	sorted_events = sorted(events, key=lambda e: e['date'])
 
 	for event in sorted_events:
 		parsed_dates = datetime.strptime(event['date'], date_format) 
+
 		date_range = (parsed_dates.date() - current_date.date()).days
 
 		if date_range <= 5:
@@ -47,7 +49,7 @@ def upcoming_sessions(sessions, sess_input):
 	active_sessions = []
 
 	for session, timer in sessions.items():
-		converted = datetime.strptime(timer, time_format)
+		converted = datetime.strptime(timer, time_format) 
 
 		local_event_times = converted + time_reader
 
