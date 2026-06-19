@@ -9,18 +9,17 @@ events = [{'event': 'U.S. Unemployment Rates', 'currency': 'USD', 'date': '2026-
 		  {'event': 'Average Hourly Earnings', 'currency': 'USD', 'date': '2026-06-25', 'impact': 'Low'}]
 
 
-def upcoming_events(events): 
+def upcoming_events(events):
 	date_format = '%Y-%m-%d'
-	current_date = datetime.today() # this must be used as reference
+	current_date = datetime.today()
+	sorted_events = sorted(events, key=lambda e: e['date'])
 
-
-	for event in events:
-		parsed_dates = datetime.strptime(event['date'], date_format) # to read the strings.
-
+	for event in sorted_events:
+		parsed_dates = datetime.strptime(event['date'], date_format) 
 		date_range = (parsed_dates.date() - current_date.date()).days
 
-		if date_range <= 5 and 'High' in event['impact']:
-			print(f'{event['event']}: Coming this week on {event['date']}')
+		if date_range <= 5:
+			print(f'{event["event"]}: Coming this week on {event["date"]}')
 
 sessions = {'London': '08:00',
 		'New York': '13:00',
@@ -48,7 +47,7 @@ def upcoming_sessions(sessions, sess_input):
 	active_sessions = []
 
 	for session, timer in sessions.items():
-		converted = datetime.strptime(timer, time_format) # string now a object.
+		converted = datetime.strptime(timer, time_format)
 
 		local_event_times = converted + time_reader
 
